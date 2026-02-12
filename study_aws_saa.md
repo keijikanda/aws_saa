@@ -16,6 +16,7 @@ AWS SAA 試験合格に向けた学習資料のメイン目次です。各ユニ
 - [Route 53](./units/route53.md)
 - [ELB & Auto Scaling](./units/elb_autoscaling.md)
 - [CloudWatch & CloudTrail](./units/cloudwatch_cloudtrail.md)
+- [Data Analytics (Athena, Redshift, Kinesis, X-Ray)](./units/data_analytics.md)
 - [Lambda & Serverless](./units/lambda_serverless.md)
 - [DynamoDB](./units/dynamodb.md)
 - [EBS & EFS](./units/ebs_efs.md)

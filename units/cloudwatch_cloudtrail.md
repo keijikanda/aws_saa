@@ -21,7 +21,7 @@
 ## CloudTrail の活用
 
 - CloudTrail は管理イベント・データイベント・インサイトを記録。
-- CloudTrail ログは S3 に配信して長期保存・分析（Athena でクエリ実行）できる。
+- CloudTrail ログは S3 に配信して長期保存・分析できる。
 - 監査・インシデント対応のために CloudTrail と GuardDuty を組み合わせる。
 
 ## クロスアカウント / 集約設計
