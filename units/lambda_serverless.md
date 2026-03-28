@@ -9,6 +9,26 @@
 - 主なトリガー: API Gateway, S3, DynamoDB Streams, Kinesis, EventBridge（CloudWatch Events）, SQS, SNS, CloudFormation Custom Resources など。
 - 非同期呼び出しと同期呼び出しの違い: 非同期は再試行/バッファリング、同期は呼び出し元が応答を待つ。
 
+## AWS AppSync
+
+- AWS AppSync はフルマネージドな GraphQL API サービスで、クライアントが必要なデータだけを柔軟に取得できる。
+- 主なデータソース:
+  - DynamoDB
+  - Lambda
+  - OpenSearch Service
+  - Aurora Serverless など
+- 特徴:
+  - GraphQL スキーマに基づいて単一エンドポイントで複数データソースを統合できる。
+  - リアルタイム更新やオフライン同期に対応し、モバイルアプリや Web アプリとの相性が良い。
+  - リゾルバで VTL または Lambda を使ってバックエンド処理を実装する。
+- 主なユースケース:
+  - モバイルアプリ向け API
+  - 複数バックエンドをまとめる BFF
+  - リアルタイム通知や共同編集アプリ
+- API Gateway との使い分け:
+  - REST API や HTTP API をシンプルに公開したい場合は API Gateway が適する。
+  - クライアントごとに取得項目が異なり、複数データソースを GraphQL で統合したい場合は AppSync が適する。
+
 ## 実行モデルとリソース管理
 
 - メモリ（128MB 〜 10,240MB）を設定すると CPU/ネットワーク帯域も比例して割り当てられる。
@@ -58,12 +78,16 @@ sam deploy --guided
 - コールドスタートの原因と対策（プロビジョンドコンカレンシー、ランタイム選択、関数分割）。
 - 実行時間が長くなる処理は Step Functions の利用を検討する点。
 - 非同期処理の再試行ポリシーや DLQ、Destination の使い分け。
+- AppSync は GraphQL ベースの API サービスであり、DynamoDB や Lambda と組み合わせたサーバーレス API 設計で問われやすい。
+- API Gateway は REST / HTTP API、AppSync は GraphQL API という役割の違いを整理しておく。
 
 ## サンプル問題
 
 1. 高スループットのイベント処理で Lambda と SQS を組み合わせる場合、スロットリングやメッセージの順序、重複処理はどのように扱いますか？
 
 2. コールドスタートを最小化するための具体策を 3 つ挙げ、それぞれの利点と欠点を説明してください。
+
+3. モバイルアプリから DynamoDB と Lambda を組み合わせて柔軟な API を提供したい。API Gateway ではなく AppSync を選ぶ理由を説明してください。
 
 参考リンク
 
